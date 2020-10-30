@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxDataSources
+import CoreLocation
 
 class SearchViewModel {
     
@@ -61,6 +62,13 @@ class SearchViewModel {
     public func searchTravel() {
         
         loadPlaces(query: "Travel")
+    }
+    
+    public func storeCurrentLocation(location: CLLocation) {
+        
+        UserDefaults.standard.set(location.coordinate.latitude, forKey: "current_latitude")
+        UserDefaults.standard.set(location.coordinate.longitude, forKey: "current_longitude")
+        UserDefaults.standard.synchronize()
     }
     
     /**

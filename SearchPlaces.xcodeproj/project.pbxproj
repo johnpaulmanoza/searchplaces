@@ -23,6 +23,7 @@
 		5166EE97254BCB3F00F33C9C /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE96254BCB3F00F33C9C /* Panel.swift */; };
 		5166EE99254BD5FB00F33C9C /* MapListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE98254BD5FB00F33C9C /* MapListItem.swift */; };
 		5166EE9D254BD84200F33C9C /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE9C254BD84200F33C9C /* LocationCell.swift */; };
+		51BCF63E254BEC4E00770F7B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BCF63D254BEC4E00770F7B /* MapKit.framework */; };
 		94E229F70F326D0A937464B7 /* Pods_SearchPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FEAD17AA05BAA23880922A /* Pods_SearchPlaces.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		5166EE96254BCB3F00F33C9C /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		5166EE98254BD5FB00F33C9C /* MapListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListItem.swift; sourceTree = "<group>"; };
 		5166EE9C254BD84200F33C9C /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		51BCF63D254BEC4E00770F7B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		79FEAD17AA05BAA23880922A /* Pods_SearchPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA32D1F62E04DD6AA70C321C /* Pods-SearchPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchPlaces.debug.xcconfig"; path = "Target Support Files/Pods-SearchPlaces/Pods-SearchPlaces.debug.xcconfig"; sourceTree = "<group>"; };
 		E6195D5B17804E9A7417127C /* Pods-SearchPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchPlaces.release.xcconfig"; path = "Target Support Files/Pods-SearchPlaces/Pods-SearchPlaces.release.xcconfig"; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51BCF63E254BEC4E00770F7B /* MapKit.framework in Frameworks */,
 				94E229F70F326D0A937464B7 /* Pods_SearchPlaces.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +182,7 @@
 		B398ABC1B15B9A323FC36D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51BCF63D254BEC4E00770F7B /* MapKit.framework */,
 				79FEAD17AA05BAA23880922A /* Pods_SearchPlaces.framework */,
 			);
 			name = Frameworks;
@@ -465,8 +469,9 @@
 			baseConfigurationReference = DA32D1F62E04DD6AA70C321C /* Pods-SearchPlaces.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UYBM4DV87M;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = J5KR3U8E95;
 				INFOPLIST_FILE = "SearchPlaces/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,6 +479,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jpmanoza.SearchPlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "BigDish Development Apps";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -484,8 +490,9 @@
 			baseConfigurationReference = E6195D5B17804E9A7417127C /* Pods-SearchPlaces.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UYBM4DV87M;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = J5KR3U8E95;
 				INFOPLIST_FILE = "SearchPlaces/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,6 +500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jpmanoza.SearchPlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "BigDish Development Apps";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

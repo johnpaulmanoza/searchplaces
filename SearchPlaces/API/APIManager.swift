@@ -25,10 +25,22 @@ class APIManager {
      */
     func loadPlaces(query: String) -> Observable<Any> {
         var url = "https://places.demo.api.here.com/places/v1/discover/search"
+        
+        // insert query as parameter
         if let q = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             url.append("?q=\(q)")
         }
-        url.append("&Geolocation=geo:14.6091,121.0223")
+        
+        // insert current location as a parameter
+        let defaults = UserDefaults.standard
+        if let lat = defaults.object(forKey: "current_latitude") as? Double, let lng = defaults.object(forKey: "current_longitude") as? Double {
+            print("using current loc", lat, lng)
+            url.append("&Geolocation=geo:\(lat),\(lng)")
+        } else {
+            // if fails, use a default location - manila
+            url.append("&Geolocation=geo:14.6091,121.0223")
+        }
+        
         url.append("&app_code=AJKnXv84fjrb0KIHawS0Tg")
         url.append("&app_id=DemoAppId01082013GAL")
         url.append("&pretty=true")

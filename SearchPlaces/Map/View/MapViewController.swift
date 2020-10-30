@@ -11,6 +11,7 @@ import MapKit
 import FloatingPanel
 import RxSwift
 import RxDataSources
+import CoreLocation
 
 class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
@@ -19,6 +20,8 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     private var fpc: FloatingPanelController!
     
     private var searchView: SearchViewController!
+    
+    private var locationManager: CLLocationManager!
     
     private let bag = DisposeBag()
     
@@ -67,6 +70,10 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
     private func bind() {
         
+        // ask for location permission
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
     }
     
     private func observe() {
@@ -120,6 +127,7 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     }
 }
 
+// conform to UISearchBarDelegate
 extension MapViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -139,6 +147,7 @@ extension MapViewController: UISearchBarDelegate {
         }
     }
 
+    // conditionally hide/show search bar header
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchView.showHeader(animated: true)
@@ -146,5 +155,34 @@ extension MapViewController: UISearchBarDelegate {
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.fpc.move(to: .full, animated: false)
         }
+    }
+}
+
+// conform to CLLocationManagerDelegate
+extension MapViewController: CLLocationManagerDelegate {
+    
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        default:
+            manager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            // store current location
+            searchView.viewModel.storeCurrentLocation(location: location)
+            
+            // update map to show your current location region
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.map.setRegion(region, animated: true)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        presentAlertWithTitle(title: "Location Error", message: error.localizedDescription, options: "") { (_) in }
     }
 }
