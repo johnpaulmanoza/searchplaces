@@ -40,25 +40,33 @@ class SearchViewModel {
             .disposed(by: bag)
     }
     
-    // Load a specific query for places
+    /**
+    Load a specific query for places related to restaurants
+    */
     public func searchRestaurants() {
         
         loadPlaces(query: "Restaurant")
     }
     
-    // Load a specific query for places
+    /**
+    Load a specific query for places related to shopping
+    */
     public func searchShopping() {
         
         loadPlaces(query: "Mall")
     }
     
-    // Load a specific query for places
+    /**
+    Load a specific query for places related to entertainment
+    */
     public func searchEntertainment() {
         
         loadPlaces(query: "Entertainment")
     }
     
-    // Load a specific query for places
+    /**
+     Load a specific query for places related to travel
+     */
     public func searchTravel() {
         
         loadPlaces(query: "Travel")
