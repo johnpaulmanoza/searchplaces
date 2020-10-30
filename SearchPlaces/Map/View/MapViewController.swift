@@ -12,7 +12,9 @@ import FloatingPanel
 class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
     var fpc: FloatingPanelController!
-
+    
+    private var searchView: SearchViewController!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -40,13 +42,19 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
         else
             { return }
         
-        fpc.set(contentViewController: contentVC)
+        searchView = contentVC
+        
+        fpc.set(contentViewController: searchView)
 
         // Track a scroll view(or the siblings) in the content view controller.
-        fpc.track(scrollView: contentVC.tableView)
+        fpc.track(scrollView: searchView.tableView)
 
+        searchView.searchBar.delegate = self
+        
         // Add and show the views managed by the `FloatingPanelController` object to self.view.
         fpc.addPanel(toParent: self)
+        
+        fpc.setApearanceForPhone()
     }
     
     private func bind() {
@@ -55,5 +63,25 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
     private func observe() {
         
+    }
+}
+
+extension MapViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton  = false
+        searchView.hideHeader(animated: true)
+        UIView.animate(withDuration: 0.25) {
+            self.fpc.move(to: .half, animated: false)
+        }
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        searchView.showHeader(animated: true)
+        searchView.tableView.alpha = 1.0
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            self?.fpc.move(to: .full, animated: false)
+        }
     }
 }
