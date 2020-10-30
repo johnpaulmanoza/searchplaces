@@ -25,6 +25,8 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
     private let bag = DisposeBag()
     
+    private var hasSelection = false
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -88,6 +90,9 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
                 switch model {
                 case .locationItem(let data):
                     guard let location = data.location else { return }
+                    
+                    // indicate has selection
+                    this?.hasSelection = true
                     
                     // extract location details from selected item
                     let address = location.locationAddress ?? ""
@@ -182,6 +187,7 @@ extension MapViewController: CLLocationManagerDelegate {
             searchView.viewModel.storeCurrentLocation(location: location)
             
             // update map to show your current location region
+            guard hasSelection == false else { return }
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.map.setRegion(region, animated: true)
