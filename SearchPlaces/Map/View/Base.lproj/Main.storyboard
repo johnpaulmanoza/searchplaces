@@ -28,6 +28,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="79a-Di-EaA" id="j5B-1D-JvU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,7 +51,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="2A7-7q-vsG">
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search a Place" translatesAutoresizingMaskIntoConstraints="NO" id="2A7-7q-vsG">
                                             <rect key="frame" x="0.0" y="6" width="414" height="56"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
@@ -65,13 +68,17 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="rVJ-f7-u6h">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="97.5"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="noC-gs-qqf">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCH-ua-Xcq">
                                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="60" id="WDX-qU-CcV"/>
-                                                                            <constraint firstAttribute="width" constant="60" id="aeD-V1-0HR"/>
+                                                                            <constraint firstAttribute="height" constant="60" id="GGb-ce-Sbl"/>
+                                                                            <constraint firstAttribute="width" constant="60" id="WmJ-fr-ddf"/>
                                                                         </constraints>
-                                                                    </imageView>
+                                                                        <state key="normal" image="food"/>
+                                                                        <connections>
+                                                                            <action selector="queryCategory1:" destination="roZ-nY-AuD" eventType="touchUpInside" id="Esx-4g-qRY"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food &amp; Drinks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2g-Ub-Gw9">
                                                                         <rect key="frame" x="0.0" y="66" width="60" height="31.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -83,13 +90,17 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="eRx-IR-71w">
                                                                 <rect key="frame" x="102" y="0.0" width="60" height="97.5"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopping" translatesAutoresizingMaskIntoConstraints="NO" id="uTl-yn-3SO">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eug-ZF-XxN">
                                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="60" id="7P5-FP-nMa"/>
-                                                                            <constraint firstAttribute="width" constant="60" id="FUT-xB-nwQ"/>
+                                                                            <constraint firstAttribute="height" constant="60" id="Icc-nC-6Na"/>
+                                                                            <constraint firstAttribute="width" constant="60" id="wHt-bf-oEg"/>
                                                                         </constraints>
-                                                                    </imageView>
+                                                                        <state key="normal" image="shopping"/>
+                                                                        <connections>
+                                                                            <action selector="queryCategory2:" destination="roZ-nY-AuD" eventType="touchUpInside" id="nUE-hK-b3k"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqi-VP-Ls5">
                                                                         <rect key="frame" x="0.0" y="66" width="60" height="31.5"/>
                                                                         <string key="text">Shopping
@@ -103,13 +114,17 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="W7L-qM-wAr">
                                                                 <rect key="frame" x="204" y="0.0" width="60" height="97.5"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fun" translatesAutoresizingMaskIntoConstraints="NO" id="51J-k4-bRV">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ti-ti-gpg">
                                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="60" id="6QB-ey-Mnj"/>
-                                                                            <constraint firstAttribute="height" constant="60" id="MPV-ye-fjO"/>
+                                                                            <constraint firstAttribute="height" constant="60" id="EAk-n1-6mW"/>
+                                                                            <constraint firstAttribute="width" constant="60" id="v1j-JH-RaY"/>
                                                                         </constraints>
-                                                                    </imageView>
+                                                                        <state key="normal" image="fun"/>
+                                                                        <connections>
+                                                                            <action selector="queryCategory3:" destination="roZ-nY-AuD" eventType="touchUpInside" id="snA-1M-3ah"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33B-Wu-PHE">
                                                                         <rect key="frame" x="0.0" y="66" width="60" height="31.5"/>
                                                                         <string key="text">Fun
@@ -123,13 +138,17 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="eF8-Ix-61L">
                                                                 <rect key="frame" x="306" y="0.0" width="60" height="97.5"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travel" translatesAutoresizingMaskIntoConstraints="NO" id="NTf-tw-rvK">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhf-IJ-HmR">
                                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="60" id="aIh-SK-HLC"/>
-                                                                            <constraint firstAttribute="height" constant="60" id="ibV-Vx-y9o"/>
+                                                                            <constraint firstAttribute="width" constant="60" id="jx1-Jb-cVG"/>
+                                                                            <constraint firstAttribute="height" constant="60" id="qRU-OZ-Ebj"/>
                                                                         </constraints>
-                                                                    </imageView>
+                                                                        <state key="normal" image="travel"/>
+                                                                        <connections>
+                                                                            <action selector="queryCategory4:" destination="roZ-nY-AuD" eventType="touchUpInside" id="mBG-fG-UC6"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7W-Jt-n8H">
                                                                         <rect key="frame" x="0.0" y="66" width="60" height="31.5"/>
                                                                         <string key="text">Travel
@@ -152,7 +171,7 @@
                                                 </constraints>
                                             </view>
                                             <prototypes>
-                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="70" id="6qw-CV-vFY" customClass="SearchCell" customModule="SearchPlaces" customModuleProvider="target">
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="70" id="6qw-CV-vFY" customClass="LocationCell" customModule="SearchPlaces" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="144" width="414" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qw-CV-vFY" id="Q34-Yl-KZg">

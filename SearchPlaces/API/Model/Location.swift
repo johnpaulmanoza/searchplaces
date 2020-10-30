@@ -9,6 +9,7 @@
 import Foundation
 import ObjectMapper
 
+// This class is used to map the api response
 class LocationData: Mappable {
     public var itemData: [Location] = []
 
@@ -21,6 +22,7 @@ class LocationData: Mappable {
     }
 }
 
+// This class is used to map the api response
 class Location: Mappable {
     
     var locationName:       String?
@@ -44,7 +46,7 @@ class Location: Mappable {
         // remove new line
         locationAddress = locationAddress?.replacingOccurrences(of: "<br/>", with: ", ")
         
-        // extract coordinates
+        // extract coordinates first item is lat and the last is long
         guard locations.count == 2 else { return }
         locationLat = locations.first
         locationLng = locations.last

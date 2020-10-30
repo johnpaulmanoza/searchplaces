@@ -13,16 +13,28 @@ import RxSwift
 
 class APIManager {
     
+    /**
+     
+    Load nearby places
+     
+     - Parameters:
+        - query: Name of establishment or location
+     
+     - Returns:
+        - An observable that emits the loaded objects
+     */
     func loadPlaces(query: String) -> Observable<Any> {
         var url = "https://places.demo.api.here.com/places/v1/discover/search"
-        url.append("?q=\(query)")
+        if let q = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            url.append("?q=\(q)")
+        }
         url.append("&Geolocation=geo:14.6091,121.0223")
         url.append("&app_code=AJKnXv84fjrb0KIHawS0Tg")
         url.append("&app_id=DemoAppId01082013GAL")
         url.append("&pretty=true")
         
         return Observable<Any>.create { observer in
-            // request
+            // create a request now and return the response via observable
             Alamofire.request(url).responseObject(completionHandler: { (response: DataResponse<LocationData>) in
                 switch response.result {
                 case .success(let value):
