@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  SearchPlaces
 //
 //  Created by John Paul Manoza on 10/30/20.
@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let viewModel = SearchViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
+    
 }
-
