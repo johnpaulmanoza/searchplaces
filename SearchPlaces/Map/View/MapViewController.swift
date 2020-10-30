@@ -21,7 +21,7 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
     private var searchView: SearchViewController!
     
-    private var locationManager: CLLocationManager!
+    private var locationManager = CLLocationManager()
     
     private let bag = DisposeBag()
     
@@ -71,9 +71,9 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     private func bind() {
         
         // ask for location permission
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     private func observe() {
