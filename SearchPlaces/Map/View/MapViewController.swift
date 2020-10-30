@@ -100,6 +100,12 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
                     // create a pin when user selected a location
                     this?.setPinUsingMKPlacemark(location: coordinates, title: name, subtitle: address)
                     
+                    // dismiss panel and dismiss the keyboard
+                    UIView.animate(withDuration: 0.25) { [weak self] in
+                        self?.searchView.searchBar.resignFirstResponder()
+                        self?.fpc.move(to: .tip, animated: false)
+                    }
+                    
                     break
                 }
             })
