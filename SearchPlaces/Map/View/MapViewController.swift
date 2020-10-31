@@ -121,10 +121,10 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
      
     Create a Map Pin
      
-        - Parameters:
-            - location: coordinates of the pin
-            - title: title of the pin
-            - subtitle: subtitle of the pin
+     - Parameters:
+        - location: coordinates of the pin
+        - title: title of the pin
+        - subtitle: subtitle of the pin
      */
     
     private func setPinUsingMKPlacemark(location: CLLocationCoordinate2D, title: String, subtitle: String) {

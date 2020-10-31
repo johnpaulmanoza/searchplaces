@@ -14,6 +14,7 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
+    // display the received cell data
     var locationData: MapCellItem? {
         didSet {
             guard let location = locationData?.location else { return }

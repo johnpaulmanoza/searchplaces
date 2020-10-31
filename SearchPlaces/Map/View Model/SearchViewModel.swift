@@ -40,7 +40,9 @@ class SearchViewModel {
     }
     
     /**
+     
     Load a specific query for places related to restaurants
+     
     */
     public func searchRestaurants() {
         
@@ -48,7 +50,9 @@ class SearchViewModel {
     }
     
     /**
+     
     Load a specific query for places related to shopping
+     
     */
     public func searchShopping() {
         
@@ -56,7 +60,9 @@ class SearchViewModel {
     }
     
     /**
+     
     Load a specific query for places related to entertainment
+     
     */
     public func searchEntertainment() {
         
@@ -64,17 +70,18 @@ class SearchViewModel {
     }
     
     /**
+        
      Load a specific query for places related to travel
+     
      */
     public func searchTravel() {
         
         loadPlaces(query: "Travel")
     }
     
-    
     /**
-    
-        Store current location to user defaults
+     
+    Store current location to user defaults
      
      - Parameters:
         - lat: current location latitude
@@ -88,7 +95,9 @@ class SearchViewModel {
     }
     
     /**
+     
     Display list items by iterating the location results and converting them to UI Model Classes
+     
      */
     private func showItems() {
         
