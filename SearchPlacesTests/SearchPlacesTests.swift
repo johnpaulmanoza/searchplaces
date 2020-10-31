@@ -28,7 +28,7 @@ class SearchPlacesTests: XCTestCase {
         do {
             
             guard let sut = try items.observeOn(scheduler).toBlocking().last() as? [Location] else {
-                XCTFail("Data is not compatible to location data")
+                XCTFail("failed expection: should return an array of locations")
                 return
             }
             
@@ -38,6 +38,48 @@ class SearchPlacesTests: XCTestCase {
             
             XCTFail(error.localizedDescription)
         }
+    }
+    
+    func test_can_extract_ccordinatesFromLocationsArray() {
+        
+        // given
+        let vm = APIManager()
+        let scheduler = MainScheduler.instance
+
+        // when
+        let items = vm
+            .loadPlaces(query: "Restaurants")
+            .subscribeOn(scheduler)
+        
+        // then
+        do {
+            
+            guard let items = try items.observeOn(scheduler).toBlocking().last() as? [Location] else {
+                XCTFail("failed expection: should return an array of locations")
+                return
+            }
+            
+            guard let firstLocation = items.first else {
+                XCTFail("failed expectation: should have at least no location item")
+                return
+            }
+            
+            guard let _ = firstLocation.locationLat, let _ = firstLocation.locationLng else {
+                XCTFail("failed expection: latitude and longitude of a location cannot be nil")
+                return
+            }
+            
+            XCTAssert(true)
+
+        } catch {
+            
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func test_can_remove_breakLinesFromLocationAddress() {
+        
+        
     }
 
     func test_can_displayLocations_in_list() {
