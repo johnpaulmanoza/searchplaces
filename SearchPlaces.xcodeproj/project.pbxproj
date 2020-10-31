@@ -24,8 +24,19 @@
 		5166EE99254BD5FB00F33C9C /* MapListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE98254BD5FB00F33C9C /* MapListItem.swift */; };
 		5166EE9D254BD84200F33C9C /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE9C254BD84200F33C9C /* LocationCell.swift */; };
 		51BCF63E254BEC4E00770F7B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BCF63D254BEC4E00770F7B /* MapKit.framework */; };
+		51FA8DEA254CDD5D00D6A88C /* SearchPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FA8DE9254CDD5D00D6A88C /* SearchPlacesTests.swift */; };
 		94E229F70F326D0A937464B7 /* Pods_SearchPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FEAD17AA05BAA23880922A /* Pods_SearchPlaces.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		51FA8DEC254CDD5D00D6A88C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5166EE5F254BBB6100F33C9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5166EE66254BBB6100F33C9C;
+			remoteInfo = SearchPlaces;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5166EE67254BBB6100F33C9C /* SearchPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +58,9 @@
 		5166EE98254BD5FB00F33C9C /* MapListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListItem.swift; sourceTree = "<group>"; };
 		5166EE9C254BD84200F33C9C /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		51BCF63D254BEC4E00770F7B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		51FA8DE7254CDD5D00D6A88C /* SearchPlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchPlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		51FA8DE9254CDD5D00D6A88C /* SearchPlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesTests.swift; sourceTree = "<group>"; };
+		51FA8DEB254CDD5D00D6A88C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79FEAD17AA05BAA23880922A /* Pods_SearchPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA32D1F62E04DD6AA70C321C /* Pods-SearchPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchPlaces.debug.xcconfig"; path = "Target Support Files/Pods-SearchPlaces/Pods-SearchPlaces.debug.xcconfig"; sourceTree = "<group>"; };
 		E6195D5B17804E9A7417127C /* Pods-SearchPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchPlaces.release.xcconfig"; path = "Target Support Files/Pods-SearchPlaces/Pods-SearchPlaces.release.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +76,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51FA8DE4254CDD5D00D6A88C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -69,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				5166EE69254BBB6100F33C9C /* SearchPlaces */,
+				51FA8DE8254CDD5D00D6A88C /* SearchPlacesTests */,
 				5166EE68254BBB6100F33C9C /* Products */,
 				C6DC904FA5A04CF7408D1A44 /* Pods */,
 				B398ABC1B15B9A323FC36D6A /* Frameworks */,
@@ -79,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				5166EE67254BBB6100F33C9C /* SearchPlaces.app */,
+				51FA8DE7254CDD5D00D6A88C /* SearchPlacesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,6 +202,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		51FA8DE8254CDD5D00D6A88C /* SearchPlacesTests */ = {
+			isa = PBXGroup;
+			children = (
+				51FA8DE9254CDD5D00D6A88C /* SearchPlacesTests.swift */,
+				51FA8DEB254CDD5D00D6A88C /* Info.plist */,
+			);
+			path = SearchPlacesTests;
+			sourceTree = "<group>";
+		};
 		B398ABC1B15B9A323FC36D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +251,24 @@
 			productReference = 5166EE67254BBB6100F33C9C /* SearchPlaces.app */;
 			productType = "com.apple.product-type.application";
 		};
+		51FA8DE6254CDD5D00D6A88C /* SearchPlacesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51FA8DF0254CDD5D00D6A88C /* Build configuration list for PBXNativeTarget "SearchPlacesTests" */;
+			buildPhases = (
+				51FA8DE3254CDD5D00D6A88C /* Sources */,
+				51FA8DE4254CDD5D00D6A88C /* Frameworks */,
+				51FA8DE5254CDD5D00D6A88C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				51FA8DED254CDD5D00D6A88C /* PBXTargetDependency */,
+			);
+			name = SearchPlacesTests;
+			productName = SearchPlacesTests;
+			productReference = 51FA8DE7254CDD5D00D6A88C /* SearchPlacesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -231,6 +281,10 @@
 				TargetAttributes = {
 					5166EE66254BBB6100F33C9C = {
 						CreatedOnToolsVersion = 11.7;
+					};
+					51FA8DE6254CDD5D00D6A88C = {
+						CreatedOnToolsVersion = 11.7;
+						TestTargetID = 5166EE66254BBB6100F33C9C;
 					};
 				};
 			};
@@ -248,6 +302,7 @@
 			projectRoot = "";
 			targets = (
 				5166EE66254BBB6100F33C9C /* SearchPlaces */,
+				51FA8DE6254CDD5D00D6A88C /* SearchPlacesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -260,6 +315,13 @@
 				5166EE7A254BBB6300F33C9C /* LaunchScreen.storyboard in Resources */,
 				5166EE77254BBB6300F33C9C /* Assets.xcassets in Resources */,
 				5166EE72254BBB6100F33C9C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51FA8DE5254CDD5D00D6A88C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +390,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51FA8DE3254CDD5D00D6A88C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51FA8DEA254CDD5D00D6A88C /* SearchPlacesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		51FA8DED254CDD5D00D6A88C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5166EE66254BBB6100F33C9C /* SearchPlaces */;
+			targetProxy = 51FA8DEC254CDD5D00D6A88C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5166EE70254BBB6100F33C9C /* Main.storyboard */ = {
@@ -506,6 +584,46 @@
 			};
 			name = Release;
 		};
+		51FA8DEE254CDD5D00D6A88C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UYBM4DV87M;
+				INFOPLIST_FILE = SearchPlacesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jpmanoza.SearchPlacesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SearchPlaces.app/SearchPlaces";
+			};
+			name = Debug;
+		};
+		51FA8DEF254CDD5D00D6A88C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UYBM4DV87M;
+				INFOPLIST_FILE = SearchPlacesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jpmanoza.SearchPlacesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SearchPlaces.app/SearchPlaces";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -523,6 +641,15 @@
 			buildConfigurations = (
 				5166EE7F254BBB6300F33C9C /* Debug */,
 				5166EE80254BBB6300F33C9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51FA8DF0254CDD5D00D6A88C /* Build configuration list for PBXNativeTarget "SearchPlacesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51FA8DEE254CDD5D00D6A88C /* Debug */,
+				51FA8DEF254CDD5D00D6A88C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
