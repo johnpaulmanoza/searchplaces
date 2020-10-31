@@ -34,7 +34,6 @@ class APIManager {
         // insert current location as a parameter
         let defaults = UserDefaults.standard
         if let lat = defaults.object(forKey: "current_latitude") as? Double, let lng = defaults.object(forKey: "current_longitude") as? Double {
-            print("using current loc", lat, lng)
             url.append("&Geolocation=geo:\(lat),\(lng)")
         } else {
             // if fails, use a default location - manila

@@ -17,4 +17,11 @@ target 'SearchPlaces' do
   
   pod 'FloatingPanel',          '2.0.1'
   
+  target 'SearchPlacesTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'RxBlocking',             '5.1.0'
+    pod 'RxTest',                 '5.1.0'
+  end
+  
 end
