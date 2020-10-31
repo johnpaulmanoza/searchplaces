@@ -184,11 +184,13 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             // store current location
-            searchView.viewModel.storeCurrentLocation(location: location)
+            let lat = location.coordinate.latitude
+            let lng = location.coordinate.longitude
+            searchView.viewModel.storeCurrentLocation(lat: lat, lng: lng)
             
             // update map to show your current location region
             guard hasSelection == false else { return }
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let center = CLLocationCoordinate2D(latitude: lat, longitude: lng)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.map.setRegion(region, animated: true)
         }
