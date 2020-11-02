@@ -25,6 +25,8 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
     private let bag = DisposeBag()
     
+    private var isMapCenteredToCurrentLocation = false
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -243,13 +245,14 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
             searchView.viewModel.storeCurrentLocation(lat: lat, lng: lng)
             
             // update map to show your current location region, once found stop updating location.
+            guard isMapCenteredToCurrentLocation == false else { return }
             let center = CLLocationCoordinate2D(latitude: lat, longitude: lng)
             centerMapToLocation(coordinates: center)
-            manager.stopUpdatingLocation()
+            isMapCenteredToCurrentLocation = true
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        presentAlertWithTitle(title: "Location Error", message: error.localizedDescription, options: "") { (_) in }
+        presentAlertWithTitle(title: "Location Error", message: error.localizedDescription, options: "OK") { (_) in }
     }
 }
