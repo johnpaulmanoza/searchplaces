@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5132BFF5254FBFEA00D03AF4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132BFF4254FBFEA00D03AF4 /* Collection.swift */; };
 		5166EE6B254BBB6100F33C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE6A254BBB6100F33C9C /* AppDelegate.swift */; };
 		5166EE6D254BBB6100F33C9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE6C254BBB6100F33C9C /* SceneDelegate.swift */; };
 		5166EE6F254BBB6100F33C9C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EE6E254BBB6100F33C9C /* MapViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		291375759D77CBCBBE8EF259 /* Pods-SearchPlacesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchPlacesTests.release.xcconfig"; path = "Target Support Files/Pods-SearchPlacesTests/Pods-SearchPlacesTests.release.xcconfig"; sourceTree = "<group>"; };
+		5132BFF4254FBFEA00D03AF4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		5166EE67254BBB6100F33C9C /* SearchPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5166EE6A254BBB6100F33C9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5166EE6C254BBB6100F33C9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				5166EE8A254BBFE800F33C9C /* UITableViewCell.swift */,
 				5166EE8C254BBFF100F33C9C /* UIViewController.swift */,
 				5166EE96254BCB3F00F33C9C /* Panel.swift */,
+				5132BFF4254FBFEA00D03AF4 /* Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				5166EE8D254BBFF100F33C9C /* UIViewController.swift in Sources */,
 				5166EE86254BBEE600F33C9C /* SearchViewController.swift in Sources */,
 				5166EE6F254BBB6100F33C9C /* MapViewController.swift in Sources */,
+				5132BFF5254FBFEA00D03AF4 /* Collection.swift in Sources */,
 				5166EE9D254BD84200F33C9C /* LocationCell.swift in Sources */,
 				5166EE93254BC54A00F33C9C /* Location.swift in Sources */,
 				5166EE6B254BBB6100F33C9C /* AppDelegate.swift in Sources */,

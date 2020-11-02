@@ -13,6 +13,7 @@ import RxDataSources
 class SearchViewModel {
     
     var sections: PublishSubject<[MapListItem]> = PublishSubject()
+    var pins: PublishSubject<[Location]> = PublishSubject()
     
     private let api = APIManager()
     private let bag = DisposeBag()
@@ -101,6 +102,7 @@ class SearchViewModel {
      */
     private func showItems() {
         
+        // emit list items
         let listItems = items
             .map { MapCellItem(location: $0) }
             .map { MapListItem.Row.locationItem(item: $0) }
@@ -108,5 +110,11 @@ class SearchViewModel {
         sections.onNext([
             MapListItem.listSection(header: "", items: listItems)
         ])
+        
+        // NOTE: Original request was to display 10 items only
+        // but I decided to display all for more ui display
+        
+        // pins.onNext(Array(items.prefix(10)))
+        pins.onNext(items)
     }
 }

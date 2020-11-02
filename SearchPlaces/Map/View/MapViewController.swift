@@ -25,8 +25,6 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
     
     private let bag = DisposeBag()
     
-    private var hasSelection = false
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -76,6 +74,9 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        // set map delegate
+        map.delegate = self
     }
     
     private func observe() {
@@ -89,21 +90,13 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
                 this?.searchView.tableView.deselectRow(at: indexPath, animated: true)
                 switch model {
                 case .locationItem(let data):
-                    guard let location = data.location else { return }
                     
-                    // indicate has selection
-                    this?.hasSelection = true
+                    // look for the annotation in the map
+                    guard let locationName = data.location?.locationName else { return }
+                    guard let annotation = this?.map.annotations.filter({ $0.title == locationName }).first else { return }
                     
-                    // extract location details from selected item
-                    let address = location.locationAddress ?? ""
-                    let name = location.locationName ?? ""
-                    
-                    // extract location coordinaets
-                    guard let lat = location.locationLat, let lng = location.locationLng else { return }
-                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                    
-                    // create a pin when user selected a location
-                    this?.setPinUsingMKPlacemark(location: coordinates, title: name, subtitle: address)
+                    // select the annotation
+                    this?.map.selectAnnotation(annotation, animated: true)
                     
                     // dismiss panel and dismiss the keyboard
                     UIView.animate(withDuration: 0.25) { [weak self] in
@@ -113,6 +106,38 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
                     
                     break
                 }
+            })
+            .disposed(by: bag)
+        
+        // Create pins and plot them into the map
+        _ = searchView.viewModel.pins.asObservable()
+            .subscribe(onNext: { [weak this = self] (items) in
+                guard let this = this else { return }
+                
+                // dismiss search field
+                this.searchBarCancelButtonClicked(this.searchView.searchBar)
+                
+                // clear all previous pin first
+                this.clearAllMapPins()
+                
+                // display map pins
+                _ = items.map { (location) -> Void in
+                    let lat = location.locationLat ?? 0
+                    let lng = location.locationLng ?? 0
+                    let name = location.locationName ?? ""
+                    let add = location.locationAddress ?? ""
+                    
+                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                    let pin = this.createPinUsingPlace(location: coordinates, title: name, subtitle: add)
+                    this.map.addAnnotation(pin)
+                }
+                
+                // center map on first result
+                guard let firstLocation = items.first else { return }
+                let lat = firstLocation.locationLat ?? 0
+                let lng = firstLocation.locationLng ?? 0
+                let center = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                this.centerMapToLocation(coordinates: center)
             })
             .disposed(by: bag)
     }
@@ -127,14 +152,36 @@ class MapViewController: UIViewController, FloatingPanelControllerDelegate {
         - subtitle: subtitle of the pin
      */
     
-    private func setPinUsingMKPlacemark(location: CLLocationCoordinate2D, title: String, subtitle: String) {
-       let annotation = MKPointAnnotation()
-       annotation.coordinate = location
-       annotation.title = title
-       annotation.subtitle = subtitle
-       let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
-       map.setRegion(coordinateRegion, animated: true)
-       map.addAnnotation(annotation)
+    private func createPinUsingPlace(location: CLLocationCoordinate2D, title: String, subtitle: String) -> MKPointAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = title
+        annotation.subtitle = subtitle
+        return annotation
+    }
+    
+    /**
+     
+    Center the map using a coordinate
+     
+     - Parameters:
+        - coordinates: coordinate to center with
+     
+     */
+    private func centerMapToLocation(coordinates: CLLocationCoordinate2D) {
+           
+        let coordinateRegion = MKCoordinateRegion(center: coordinates, latitudinalMeters: 800, longitudinalMeters: 800)
+        map.setRegion(coordinateRegion, animated: true)
+    }
+    
+    /**
+     
+    Clear all previous map pins
+     
+     */
+    private func clearAllMapPins() {
+        
+        _ = map.annotations.map { map.removeAnnotation($0) }
     }
 }
 
@@ -170,7 +217,14 @@ extension MapViewController: UISearchBarDelegate {
 }
 
 // conform to CLLocationManagerDelegate
-extension MapViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+
+        // center the mapView on the selected pin
+        let coordinates = view.annotation!.coordinate
+        centerMapToLocation(coordinates: coordinates)
+    }
     
     private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
@@ -188,11 +242,10 @@ extension MapViewController: CLLocationManagerDelegate {
             let lng = location.coordinate.longitude
             searchView.viewModel.storeCurrentLocation(lat: lat, lng: lng)
             
-            // update map to show your current location region
-            guard hasSelection == false else { return }
+            // update map to show your current location region, once found stop updating location.
             let center = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.map.setRegion(region, animated: true)
+            centerMapToLocation(coordinates: center)
+            manager.stopUpdatingLocation()
         }
     }
     
