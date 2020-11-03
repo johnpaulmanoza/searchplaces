@@ -602,6 +602,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = J5KR3U8E95;
 				INFOPLIST_FILE = "SearchPlaces/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -623,6 +624,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = J5KR3U8E95;
 				INFOPLIST_FILE = "SearchPlaces/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
